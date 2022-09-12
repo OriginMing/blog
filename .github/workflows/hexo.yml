@@ -34,7 +34,6 @@ jobs:
       - name: 安装hexo-cli 以及依赖包
         # 下载 hexo-cli 脚手架及相关安装包
         run: |
-          cd ./blog
           npm install -g hexo-cli
           npm install
 
@@ -50,7 +49,7 @@ jobs:
           GITHUB_REPO: github.com/OriginMing/OriginMing.github.io
         # 将编译后的博客文件推送到指定仓库
         run: |
-          cd ./public && git init && git add .
+          cd ./blog/public && git init && git add .
           git config user.name "OriginMing"
           git config user.email "2368102002@qq.com"
           git add .
