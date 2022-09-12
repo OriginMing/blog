@@ -31,26 +31,23 @@ jobs:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
 
-      - name: 安装hexo-cli 以及依赖包
+      - name: Install hexo dependencies
         # 下载 hexo-cli 脚手架及相关安装包
         run: |
           npm install -g hexo-cli
           npm install
-
-      - name: 生成静态资源
+      - name: Generate files
         # 编译 markdown 文件
         run: |
-          cd ./blog
           hexo clean
           hexo generate
-
-      - name: 部署博客
+      - name: Deploy hexo blog
         env:
           # Github 仓库
           GITHUB_REPO: github.com/OriginMing/OriginMing.github.io
         # 将编译后的博客文件推送到指定仓库
         run: |
-          cd ./public && git init && git add .
+          cd ./blog/public && git init && git add .
           git config user.name "OriginMing"
           git config user.email "2368102002@qq.com"
           git add .
