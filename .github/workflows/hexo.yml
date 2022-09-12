@@ -35,12 +35,12 @@ jobs:
         # 下载 hexo-cli 脚手架及相关安装包
         run: |
           npm install -g hexo-cli
-          npm install hexo
+          cd ./blog
           npm install
+          npm install hexo-renderer-less
       - name: Generate files
         # 编译 markdown 文件
         run: |
-          cd ./blog
           hexo clean
           hexo generate
       - name: Deploy hexo blog
