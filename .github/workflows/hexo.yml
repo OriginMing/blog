@@ -41,7 +41,7 @@ jobs:
         # 编译 markdown 文件
         run: |
           hexo clean
-          hexo generate -f
+          hexo generate
 
       - name: Deploy hexo blog
         env:
